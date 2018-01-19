@@ -15,7 +15,8 @@ class Album extends Component {
             currentSong: album.songs[0],
             isPlaying: false,
             currentTime: 0,
-            duration: album.songs[0].duration
+            duration: album.songs[0].duration,
+            volume: 80
         };
         this.audioElement = document.createElement('audio');
         this.audioElement.src = album.songs[0].audioSrc;
@@ -28,16 +29,21 @@ class Album extends Component {
             },
             durationchange: e => {
               this.setState({ duration: this.audioElement.duration });
+            },
+            volumeupdate: e => {
+                this.setState ({ volume: this.audioElement.volume });
             }
           };
           this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
           this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+          this.audioElement.addEventListener('volumecchange', this.eventListeners.volumeupdate);
         }
      
         componentWillUnmount() {
           this.audioElement.src = null;
           this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
-     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+          this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+          this.audioElement.removeEventListener('volumeupdate', this.eventListeners.volumeupdate);
     }
     
     play() {
@@ -91,6 +97,20 @@ class Album extends Component {
         this.setState({ currentTime: newTime });
     }
 
+    handleVolumeChange(e) {
+        const newVolume = e.target.value;
+        this.audioElement.volume = newVolume;
+        this.setState({ volume: newVolume });
+    }
+
+    formatTime() {
+        const currentTime = this.state.album.currentTime;
+        var newTime = Math.floor(currentTime);
+        newTime = newTime + ":" + currentTime[2] + currentTime[3];
+        return newTime;
+        //ehh I found a ghetto way of doing this in dd
+    }
+
   render() {
     return (
       <section className="album">
@@ -118,7 +138,7 @@ class Album extends Component {
                               </tr>
                           </td>
                             <td className="song-title">{song.title}</td>
-                            <td className="song-duration">{song.duration}</td>
+                            <td className="song-duration">{(song.duration / 60).toFixed(2).replace(".", ":")}</td>
                         </tr>
                 )}
                 </tbody>
@@ -131,7 +151,8 @@ class Album extends Component {
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
             handleNextClick={() => this.handleNextClick()}
-            handleTimeChange={(e) => this.handleTimeChange(e)} />
+            handleTimeChange={(e) => this.handleTimeChange(e)}
+            handleVolumeChange={(e) => this.handleVolumeChange(e)} />
       </section>
     );
   }
