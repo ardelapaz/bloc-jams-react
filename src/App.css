@@ -14,8 +14,10 @@
   color: white;
 }
 
-nav {
+a {
   color: red;
+  padding: 10px;
+  outline: black, 3px;
 }
 
 .App-title {
