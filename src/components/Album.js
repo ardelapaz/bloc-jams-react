@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+  } from 'material-ui/Table';
+  import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
 class Album extends Component {
@@ -115,37 +125,32 @@ class Album extends Component {
 
   render() {
     return (
-        <MuiThemeProvider>
+        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+
       <section className="album">
         <section id="album-info">
         <img id="album-cover-art" src={this.state.album.albumCover} />
-           <div className="album-details">
-             <h1 id="album-title">{this.state.album.title}</h1>
-             <h2 className="artist">{this.state.album.artist}</h2>
-             <div id="release-info">{this.state.album.year} {this.state.album.label}</div>
-           </div>
-         </section>
-         <table id="song-list">
-            <colgroup>
-                <col id="song-number-column" />
-                <col id="song-title-column" />
-                <col id="song-duration-column" />
-            </colgroup>
-            <tbody>
-                {
-                    this.state.album.songs.map( (song, index) => 
-                        <tr className = "song" key={index} onClick ={() => this.handleSongClick(song) } >
-                            <td className="song-actions">
-                                <tr>
-                              <span className="song-number">{index+1}</span>
-                              </tr>
-                          </td>
-                            <td className="song-title">{song.title}</td>
-                            <td className="song-duration">{(song.duration / 60).toFixed(2).replace(".", ":")}</td>
-                        </tr>
-                )}
-                </tbody>
-            </table>
+        <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHeaderColumn>Title</TableHeaderColumn>
+        <TableHeaderColumn>Artist</TableHeaderColumn>
+        <TableHeaderColumn>Duration</TableHeaderColumn>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+    {
+                    this.state.album.songs.map( (song, index) =>
+      <TableRow onClick {...() => this.handleSongClick(song)}>
+        <TableRowColumn>{song.title}</TableRowColumn>
+        <TableRowColumn>{this.state.album.artist}</TableRowColumn>
+        <TableRowColumn>{song.duration}</TableRowColumn>
+      </TableRow>
+                    )}
+    </TableBody>
+  </Table>
+);
+</section>
             <PlayerBar 
             isPlaying={this.state.isPlaying} 
             currentSong={this.state.currentSong}

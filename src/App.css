@@ -8,18 +8,10 @@
 }
 
 .App-header {
-  background: url(./images/piano.jpeg);
-  background-position: center;
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-}
-
-a {
-  color: red;
-  padding: 10px;
-  outline: black, 3px;
 }
 
 .App-title {
@@ -39,8 +31,6 @@ h2 {
   color: white;
   letter-spacing: 1px;
 }
-
-
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

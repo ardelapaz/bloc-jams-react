@@ -1,4 +1,5 @@
 import React from 'react';
+import './../Landing.css';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -11,9 +12,7 @@ const Landing = () => (
       <div className="point">
         <h2 className="point-title">Choose your music</h2>
         <p className="point-description">The world is full of music; why should you have to listen to music that someone else chose?</p>
-        <CardMedia>
-        <img src="src/images/piano.jpeg" />
-        </CardMedia>
+        <img src="images/record.jpeg" />
       </div>
       </Card>
       <Card>

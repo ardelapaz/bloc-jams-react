@@ -4,6 +4,7 @@ import albumData from './../data/albums';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
+import './../library.css';
 
 
 let SelectableList = makeSelectable(List);
