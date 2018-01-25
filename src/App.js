@@ -12,9 +12,6 @@ import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
-
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +35,7 @@ class App extends Component {
       open: false,
     });
   };
+
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
@@ -60,13 +58,6 @@ class App extends Component {
           </Menu>
         </Popover>
       <div className="App">
-        <header className="App-header">
-        <nav>
-        </nav>
-        
-        {/* <img src={require('./../public/assets/images/piano.jpeg')} alt = "" /> */}
-        
-        </header>
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
