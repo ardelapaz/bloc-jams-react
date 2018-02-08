@@ -1,43 +1,38 @@
 import React from 'react';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import './../App.css'
 
-
-var heroStyle = {
-  height: '25vh',
-  width: '100vw'
-}
-var cardStyle = {
-  height: '50vh',
-  width: '50vw',
-  
-}
 const Landing = () => (
   <section className="landing">
-  <div id = "top">
-    <h1 id ="top1">
-      Redefining online music libraries
-    </h1>
-      <img id = "logo" src="../images/blocJams.png"></img>
-  </div>
+    <section id="hero">
+      <div id="top">
+        <h1 id="top1">
+          Redefining online music libraries
+        </h1>
+      </div>
+
+    </section>
 
     <section className="selling-points">
-      <Card is="center" style={cardStyle}>
-        <CardMedia style={cardStyle} overlay={<CardTitle title="Choose your music" subtitle="The world is full of music; why should you have to listen to music that someone else chose?" />}>
-          <img src="../images/player.jpeg"style={cardStyle} />
-        </CardMedia>
-      </Card>
-      <Card style={cardStyle}>
-        <CardMedia style={cardStyle} overlay={<CardTitle title="Unlimited, streaming, ad-free" subtitle="No arbitrary limits. No distractions." />}>
-          <img src="../images/board.jpeg"style={cardStyle} />
-        </CardMedia>
-      </Card>
-      <Card style={cardStyle}>
-        <CardMedia style={cardStyle} overlay={<CardTitle title="Mobile enabled" subtitle="Listen to your music on the go. This streaming service is available on all mobile platforms." />}>
-          <img src="../images/mic.jpeg"style={cardStyle} />
-        </CardMedia>
-      </Card>
+      <img id="landingImages" src="../images/player.jpeg" alt="" />
+      <div id="landing-text">
+        <h2>Choose your music</h2>
+        <p className="landing"> The world is full of music; why should you have to listen to the music that someone else choses?</p>
+      </div>
+      <div id="landing-text">
+        <h2>Unlimited, streaming, and add-free</h2>
+        <p className="landing"> No arbitrary limits and no distractions.</p>
+      </div>
+      <img id="landingImages" src="../images/board.jpeg" alt="" />
+      <img id="landingImages" src="../images/mic.jpeg" alt="" />
+      <div id="landing-text">
+        <h2>Mobile enabled</h2>
+        <p className="landing"> Listen to your music on the go. This streaming service is available on all platforms. </p>
+      </div>
+      <div id="landing-text">
+        <h2>Record breaking music at record breaking speed</h2>
+        <p className="landing"> Listen to all of your favorite artist's music as soon as it releases through our streaming platform.</p>
+      </div>
+      <img id="landingImages" src="../images/record.jpeg" alt="" />
     </section>
   </section>
 );

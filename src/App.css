@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #c64949;
+  background-color: rgb(223, 223, 223);
 }
 
 .App-logo {
@@ -23,39 +23,206 @@
   font-size: large;
 }
 h1 {
-  -webkit-font-smoothing: antialiased;
+-webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  position: absolute;
-  top: 380px;
-  right: 65vh;
-  font-size: 32pt;
-  letter-spacing: 1px;
+font-family: 'Roboto', sans-serif;
+color: white;
+font-size: 28pt;
+margin: 15px;
+letter-spacing: 1px;
+}
+p.albumInfo {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+font-family: 'Roboto', sans-serif;
+color: black;
+}
+p.landing { 
+  text-align: left;
+  padding: 25px;
+}
+.header {
+right: 65vh;
+font-size: 32pt;
+letter-spacing: 1px;
+}
+img#blocJams {
+ width: 220px;
+ height: 90px;
+ margin-left: 5px;
+}
+div#header {
+  background-color: white;
+  height: 80px;
+  width: 100vw;
+}
+nav {
+  display: inline;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ul#nav {
+  display: inline;
+  list-style-type: none;
+  position: relative;
+  top: -35px;
+  color: black;
+}
+li {
+  display: inline;
+  padding: 25px;
+  color: black;
+}
+li a:hover {
+  background-color:rgba(236, 236, 236, 0.4);
 }
 h2 {
   color: white;
   letter-spacing: 1px;
 }
 
-div #top {
-  background-color: #c64949;
+#buttons {
+  display: inline-flex;
+  width: 100vw;
+  justify-content: center;
+  align-items:flex-start;
+  margin-top: 3px;
+  padding-bottom: 20px;
+}
+#individualPlaybackButtons {
+  padding: 10px;
 }
 
-h1 #top1 {
-  font-family: 'Roboto', sans-serif;
-  position: absolute;
-    top: 200px;
-    right: 50vh;
-    font-size: 36pt;
+section.selling-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+  max-height: 500px;
+  min-width: 100vw;
 }
 
-img #logo {
+img#landingImages {
+  display: inline-block;
+  width: 50vw;
+  height: 500px;
+}
+
+div#landing-text {
+  display: inline-block;
+  color: black;
+  background-color: white;
+  color: black;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  font-size: 18pt;
+  text-align: left;
+  width: 50vw;
+  height: 500px;
+}
+h2 {
+  font-size: 48pt;
+  color: black;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  padding: 25px;
+}
+
+#album-cover-art {
+  display: inline-flex;
+  color: white;
+  margin: 50px;
+}
+h1#artist {
+  align-self: stretch;
+  flex-basis: 700px;
+  color: black;
+}
+.albumInfo {
+  align-self: center;
+  align-content: flex-start;
+  font-size: 24pt;
+  flex-shrink: 1;
+}
+.player-bar {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  width: 90%;
+  margin-top: 15px;
+}
+p.current-time {
+  align-self: center;
+  order: 1;
+  margin: 10px;
+  padding-right: 15px;
+  padding-bottom: 4px;
+}
+p.total-time {
+  align-self: center;
+  order: 3;
+  margin: 10px;
+  padding-left: 15px;
+  padding-bottom: 4px;
+}
+
+.player-bar #time-control {
+  order: 2;
+  margin-top: 25px;
+  flex-grow: 10;
+}
+.player-bar #volume-control {
+  order: 4;
+  width: 100px;
+  flex-grow: 1;
+  margin: 5px;
+}
+div#vol {
+  order: 4;
+  align-self: center;
+  margin: 10px;
+  padding-right: 15px;
+  padding-bottom: 4px;
+}
+div#vol2 {
+  order: 6;
+  align-self: center;
+  margin: 10px;
+  padding-left: 15px;
+  padding-bottom: 4px;
+}
+
+
+
+section#hero {
+  background-image: url("/images/red.jpg");
+  height: 40vh;
+  width: 100%;
+  background-size: cover;
+}
+div#top {
+  display: flex;
+  flex-wrap: wrap;
+}
+img#libraryImage { 
+width: 600px;
+height: 500px;
+}
+h1#top1 {
   position: relative;
-  right: 80vh;
-  height: 400px;
+  top: 100px;
+  height: 60px;
+  width: 100%;
+  padding: 50px;
+  letter-spacing: 3px;
+  font-style: italic;
 }
-
 
 
 

@@ -10,8 +10,6 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 var test = {
     color: 'red'
@@ -32,7 +30,7 @@ class Album extends Component {
             isPlaying: false,
             currentTime: 0,
             duration: album.songs[0].duration,
-            volume: 80
+            volume: 50
         };
         this.audioElement = document.createElement('audio');
         this.audioElement.src = album.songs[0].audioSrc;
@@ -80,6 +78,7 @@ class Album extends Component {
 
     handleSongClick(song) {
         const isSameSong = this.state.currentSong === song;
+        console.log("test");
         if (this.state.isPlaying && isSameSong) {
             this.pause();
         } else {
@@ -108,18 +107,14 @@ class Album extends Component {
         this.play(newSong);
     }
 
-    handleTimeChange(e) {
-        var newTime = this.audioElement.duration * e.target.value;
-        this.audioElement.currentTime = newTime;
-        var finalTime = this.formatTime(newTime);
-        console.log('e');
-        this.setState({ currentTime: finalTime });
+    handleVolumeChange(val) {
+        this.audioElement.volume = (val/100);
+        this.setState({ volume: val });
     }
 
-    handleVolumeChange(e) {
-        const newVolume = e.target.value;
-        this.audioElement.volume = newVolume;
-        this.setState({ volume: newVolume });
+    handleTimeChange(val) { 
+        this.audioElement.currentTime = val;
+        this.setState({ currentTime: val });
     }
 
     formatTime(input) {
@@ -142,25 +137,27 @@ class Album extends Component {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-
+            <MuiThemeProvider >
                 <section className="album">
                     <section id="album-info">
-                        <img id="album-cover-art" src={this.state.album.albumCover} />
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
+                    <div id="album-cover-art">
+                        <img src={this.state.album.albumCover} alt="Album cover" />
+                        <h1 id="artist"> {this.state.album.artist} </h1>
+                        <p className = "albumInfo"> This is where album information would go. A little bit of a background of the album along with the release date of the album. </p>
+                    </div>
+                        <Table onRowSelection={val => this.handleSongClick(this.state.album.songs[val]) }>
+                            <TableHeader displaySelectAll = {false} adjustForCheckbox = {false}>
+                                <TableRow >
                                     <TableHeaderColumn style={test}>Title</TableHeaderColumn>
-                                    <TableHeaderColumn style={test}>Artist</TableHeaderColumn>
                                     <TableHeaderColumn style={test}>Duration</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
-                            <TableBody>
+                            <TableBody
+                            displayRowCheckbox={false}>
                                 {
                                     this.state.album.songs.map((song, index) =>
-                                        <TableRow onClick {...() => this.handleSongClick(song) }>
+                                        <TableRow>
                                             <TableRowColumn>{song.title}</TableRowColumn>
-                                            <TableRowColumn>{this.state.album.artist}</TableRowColumn>
                                             <TableRowColumn>{this.formatTime(song.duration)}</TableRowColumn>
                                         </TableRow>
                                     )}

@@ -52,7 +52,7 @@ class Library extends Component {
     render() {
         return (
             <MuiThemeProvider>
-            <SelectableList className = 'library'>
+            <SelectableList className = 'library' >
                 {
                     this.state.albums.map( (album, index) =>
                     <Link to={`/album/${album.slug}`} key={index}>

@@ -4,13 +4,11 @@ import './App.css';
 import Landing from './components/Landing';
 import Library from './components/Library';
 import Album from './components/Album';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Placeholder from './components/Placeholder'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import Popover from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -35,33 +33,29 @@ class App extends Component {
       open: false,
     });
   };
-
+  
+  
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <RaisedButton
+      <MuiThemeProvider>
+        <div id="header">
+        <img id = "blocJams" src="../images/blocJams.png" alt="Bloc Jams" 
           onClick={this.handleClick}
-          label="Go to.."
         />
-        <Popover className="App"
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          onRequestClose={this.handleRequestClose}
-        >
-          <Menu>
-            <MenuItem primaryText="Library" href="/library" />
-            <MenuItem primaryText="Landing" href= "/" />
-            <MenuItem primaryText="Profile" href="/profile" />
-            <MenuItem primaryText="Sign out" />
-          </Menu>
-        </Popover>
+          <ul id="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
       <div className="App">
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
           <Route path="/Album/:slug" component={Album} />
+          <Route path="/Profile" component={Placeholder} />
+          <Route path="/About" component={Placeholder} />
         </main>
       </div>
       </MuiThemeProvider>
